@@ -70,7 +70,24 @@ bool HelloWorld::init()
     sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 
     // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+//    this->addChild(sprite, 0);
+    
+    
+    // Test
+    auto panel = Sprite::create("CloseNormal.png");
+    panel->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    panel->setScale(5);
+    this->addChild(panel, 0);
+    
+    auto rotateAction1 = RotateBy::create(2, 180, 90);
+    panel->runAction(rotateAction1);
+
+    // replace image
+    
+    auto rotateAction2 = RotateBy::create(2, 180, 90);
+    panel->runAction(rotateAction2);
+
+    //    panel->setR
     
     return true;
 }
