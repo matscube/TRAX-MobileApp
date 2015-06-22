@@ -35,6 +35,16 @@ bool FieldScene::init()
         return false;
     }
     
+    
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+    auto panel = Sprite::create("CloseNormal.png");
+    panel->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    panel->setScale(5);
+    this->addChild(panel, 0);
+
+    
     return true;
 }
 
