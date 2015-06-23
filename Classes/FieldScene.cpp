@@ -39,9 +39,9 @@ bool FieldScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    auto panel = Sprite::create("CloseNormal.png");
+    auto panel = Sprite::create("trax_panel1.png");
     panel->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-    panel->setScale(5);
+//    panel->setScale(5);
     this->addChild(panel, 0);
 
     
