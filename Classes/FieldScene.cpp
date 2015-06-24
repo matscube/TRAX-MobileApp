@@ -39,10 +39,24 @@ bool FieldScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    auto panel = Sprite::create("trax_panel1.png");
-    panel->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-//    panel->setScale(5);
-    this->addChild(panel, 0);
+    Size targetSize = Size(100, 100);
+
+    auto panel1 = Sprite::create("trax_panel1.png");
+    panel1->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    Size originalSize1 = panel1->getContentSize();
+    panel1->cocos2d::Node::setScale((targetSize.width / originalSize1.width), (targetSize.height / originalSize1.height));
+    this->addChild(panel1, 0);
+
+    auto panel2 = Sprite::create("trax_panel2.png");
+    panel2->setPosition(Vec2(visibleSize.width/2 + origin.x + 200, visibleSize.height/2 + origin.y + 200));
+//    panel2->setScale(0.5);
+    panel2->setContentSize(Size(50, 50));
+    this->addChild(panel2, 0);
+    
+    
+    //Size tTargetSize = Size( 100.0f, 200.0f );
+/*    Size tSizeOrig = tSprite->getContentSize();
+    tSprite->setScale( ( tTargetSize.width / tSizeOrig.width ), ( tTargetSize.height / tSizeOrig.height ) );*/
 
     
     return true;
