@@ -26,12 +26,9 @@ Scene* FieldScene::createScene()
 }
 
 // on "init" you need to initialize your instance
-bool FieldScene::init()
-{
-    //////////////////////////////
+bool FieldScene::init() {
     // 1. super init first
-    if ( !LayerColor::initWithColor(Color4B(100, 100, 100, 255)) )
-    {
+    if ( !LayerColor::initWithColor(Color4B(100, 100, 100, 255)) ) {
         return false;
     }
     
@@ -48,19 +45,39 @@ bool FieldScene::init()
 
     auto panel2 = Sprite::create("trax_panel2.png");
     panel2->setPosition(Vec2(visibleSize.width/2 + origin.x + 200, visibleSize.height/2 + origin.y + 200));
-//    panel2->setScale(0.5);
     panel2->setContentSize(Size(50, 50));
     this->addChild(panel2, 0);
     
     
-    //Size tTargetSize = Size( 100.0f, 200.0f );
-/*    Size tSizeOrig = tSprite->getContentSize();
-    tSprite->setScale( ( tTargetSize.width / tSizeOrig.width ), ( tTargetSize.height / tSizeOrig.height ) );*/
+    auto listener1 = EventListenerTouchOneByOne::create();
+    listener1->setSwallowTouches(this);
+    
+    listener1->onTouchBegan = [](Touch* touch, Event* event) {
+        auto target = static_cast<Sprite*>(event->getCurrentTarget());
+        
+        Point locationInNode = target->convertToNodeSpace(touch->getLocation());
+        Size s = target->getContentSize();
+        Rect rect = Rect(0, 0, s.width, s.height);
+        log("target: x = %f, y = %f", locationInNode.x, locationInNode.y);
+        
+        if (rect.containsPoint(locationInNode)) {
+            log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
 
+            auto halfRotateAction = RotateBy::create(0.5, Vec3(0, 90, 0));
+            CallFunc *replaceImageAction = CallFunc::create([target]() {
+                             target->setTexture("trax_panel2.png");
+            });
+            Sequence *seq = Sequence::create(halfRotateAction, replaceImageAction, halfRotateAction, NULL);
+            target->runAction(seq);
+
+            return true;
+        }
+        return false;
+    };
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, panel1);
     
     return true;
 }
-
 
 void FieldScene::menuCloseCallback(Ref* pSender)
 {

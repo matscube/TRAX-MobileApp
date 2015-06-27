@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 
+USING_NS_CC;
+
 class FieldScene : public cocos2d::LayerColor
 {
 public:
