@@ -72,8 +72,9 @@ bool FieldScene::init() {
 
     
     auto panel2 = Sprite::create("trax_panel2.png");
-    panel2->setPosition(Vec2(visibleSize.width/2 + origin.x + 200, visibleSize.height/2 + origin.y + 200));
-    panel2->setContentSize(Size(50, 50));
+    panel2->setPosition(Vec2(visibleSize.width/2 + 100 + origin.x, visibleSize.height/2 + 100 + origin.y));
+    Size originalSize2 = panel2->getContentSize();
+    panel2->cocos2d::Node::setScale((targetSize.width / originalSize2.width), (targetSize.height / originalSize2.height));
     this->addChild(panel2, 0);
 
     auto listener2 = EventListenerTouchOneByOne::create();
