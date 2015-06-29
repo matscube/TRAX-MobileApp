@@ -7,6 +7,7 @@
 //
 
 #include "FieldScene.h"
+#include "PanelSprite.h"
 
 USING_NS_CC;
 
@@ -36,6 +37,13 @@ bool FieldScene::init() {
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     Size targetSize = Size(100, 100);
+    
+    auto p = PanelSprite::create();
+    p->setPosition(Vec2(visibleSize.width/2 - 100 + origin.x, visibleSize.height/2 - 100 + origin.y));
+    Size originalSizep = p->getContentSize();
+    p->cocos2d::Node::setScale((targetSize.width / originalSizep.width), (targetSize.height / originalSizep.height));
+    this->addChild(p, 0);
+    
 
     auto panel1 = Sprite::create("trax_panel1.png");
     panel1->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));

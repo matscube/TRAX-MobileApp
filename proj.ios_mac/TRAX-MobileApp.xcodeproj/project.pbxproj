@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		21551DC11B39B63500CC422A /* trax_panel1.png in Resources */ = {isa = PBXBuildFile; fileRef = 21551DBF1B39B63500CC422A /* trax_panel1.png */; };
 		21551DC21B39B63500CC422A /* trax_panel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 21551DC01B39B63500CC422A /* trax_panel2.png */; };
+		21A853091B41C2CC009BC3E9 /* PanelSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21A853071B41C2CC009BC3E9 /* PanelSprite.cpp */; };
 		21C889921B33117A00B6A93C /* FieldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21C889901B33117A00B6A93C /* FieldScene.cpp */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		3EACC98F19EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
@@ -111,6 +112,8 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		21551DBF1B39B63500CC422A /* trax_panel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trax_panel1.png; sourceTree = "<group>"; };
 		21551DC01B39B63500CC422A /* trax_panel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trax_panel2.png; sourceTree = "<group>"; };
+		21A853071B41C2CC009BC3E9 /* PanelSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelSprite.cpp; sourceTree = "<group>"; };
+		21A853081B41C2CC009BC3E9 /* PanelSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelSprite.h; sourceTree = "<group>"; };
 		21C889901B33117A00B6A93C /* FieldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FieldScene.cpp; sourceTree = "<group>"; };
 		21C889911B33117A00B6A93C /* FieldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldScene.h; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -304,6 +307,8 @@
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				21C889901B33117A00B6A93C /* FieldScene.cpp */,
 				21C889911B33117A00B6A93C /* FieldScene.h */,
+				21A853071B41C2CC009BC3E9 /* PanelSprite.cpp */,
+				21A853081B41C2CC009BC3E9 /* PanelSprite.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -507,6 +512,7 @@
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				21A853091B41C2CC009BC3E9 /* PanelSprite.cpp in Sources */,
 				21C889921B33117A00B6A93C /* FieldScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
