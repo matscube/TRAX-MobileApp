@@ -22,6 +22,8 @@ public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static PanelSprite* create();
     
+    int status; // 0 or 1
+    
     void initOptions();
     
     void addEvents();
