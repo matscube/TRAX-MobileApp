@@ -34,6 +34,11 @@ PanelSprite *PanelSprite::create() {
 
 void PanelSprite::initOptions() {
     this->status = 0;
+    
+    Size originalSize1 = this->getContentSize();
+    Size targetSize = Size(100, 100);
+    this->cocos2d::Node::setScale((targetSize.width / originalSize1.width), (targetSize.height / originalSize1.height));
+
 }
 
 void PanelSprite::addEvents() {
