@@ -48,6 +48,8 @@ void PanelSprite::addEvents() {
     listener1->onTouchBegan = [](Touch* touch, Event* event) {
         PanelSprite *target = static_cast<PanelSprite*>(event->getCurrentTarget());
         
+        target->getEventDispatcher()->pauseEventListenersForTarget(target);
+        
         Point locationInNode = target->convertToNodeSpace(touch->getLocation());
         Size s = target->getContentSize();
         Rect rect = Rect(0, 0, s.width, s.height);
@@ -65,11 +67,17 @@ void PanelSprite::addEvents() {
                 }
                 target->status = (target->status + 1) % 2;
             });
-            Sequence *seq = Sequence::create(halfRotateAction, replaceImageAction, halfRotateAction, NULL);
+
+            CallFunc *resumeAction = CallFunc::create([target]() {
+                target->getEventDispatcher()->resumeEventListenersForTarget(target);
+            });
+            
+            Sequence *seq = Sequence::create(halfRotateAction, replaceImageAction, halfRotateAction, resumeAction, NULL);
             target->runAction(seq);
             
             return true;
         }
+        target->getEventDispatcher()->resumeEventListenersForTarget(target);
         return false;
     };
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);
