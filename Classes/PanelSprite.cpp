@@ -42,6 +42,10 @@ void PanelSprite::initOptions() {
 }
 
 void PanelSprite::addEvents() {
+    this->setRotatePanelEvent();
+}
+
+void PanelSprite::setChangePanelEvent() {
     auto listener1 = EventListenerTouchOneByOne::create();
     listener1->setSwallowTouches(true);
     
@@ -67,7 +71,7 @@ void PanelSprite::addEvents() {
                 }
                 target->status = (target->status + 1) % 2;
             });
-
+            
             CallFunc *resumeAction = CallFunc::create([target]() {
                 target->getEventDispatcher()->resumeEventListenersForTarget(target);
             });
@@ -83,6 +87,39 @@ void PanelSprite::addEvents() {
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);
 }
 
+void PanelSprite::setRotatePanelEvent() {
+    auto listener1 = EventListenerTouchOneByOne::create();
+    listener1->setSwallowTouches(true);
+    
+    listener1->onTouchBegan = [](Touch* touch, Event* event) {
+        PanelSprite *target = static_cast<PanelSprite*>(event->getCurrentTarget());
+        
+        target->getEventDispatcher()->pauseEventListenersForTarget(target);
+        
+        Point locationInNode = target->convertToNodeSpace(touch->getLocation());
+        Size s = target->getContentSize();
+        Rect rect = Rect(0, 0, s.width, s.height);
+        log("target: x = %f, y = %f", locationInNode.x, locationInNode.y);
+        
+        if (rect.containsPoint(locationInNode)) {
+            log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
+            
+            auto rotateAction = RotateBy::create(0.5, Vec3(0, 0, 90));
+            
+            CallFunc *resumeAction = CallFunc::create([target]() {
+                target->getEventDispatcher()->resumeEventListenersForTarget(target);
+            });
+            
+            Sequence *seq = Sequence::create(rotateAction, resumeAction, NULL);
+            target->runAction(seq);
+            
+            return true;
+        }
+        target->getEventDispatcher()->resumeEventListenersForTarget(target);
+        return false;
+    };
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);
+}
 void PanelSprite::touchEvent(Touch *touch) {
     
 }

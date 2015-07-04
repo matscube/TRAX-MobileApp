@@ -27,6 +27,8 @@ public:
     void initOptions();
     
     void addEvents();
+    void setChangePanelEvent();
+    void setRotatePanelEvent();
     void touchEvent(Touch *touch);
 };
 
