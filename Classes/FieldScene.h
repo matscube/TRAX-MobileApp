@@ -10,6 +10,7 @@
 #define __TRAX_MobileApp__FieldScene__
 
 #include <stdio.h>
+#include "PanelSprite.h"
 
 USING_NS_CC;
 
@@ -24,6 +25,14 @@ public:
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
+    void addEvents();
+    
+    void addSelectorListener();
+    
+    void initPanelSelector();
+
+    // Add new panel
+    private: PanelSprite *nextPanel;
     
     // implement the "static create()" method manually
     CREATE_FUNC(FieldScene);
