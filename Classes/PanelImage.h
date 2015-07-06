@@ -32,6 +32,7 @@ public:
     static PanelImage* create(PanelImageType type);
     
     void initOptions();
+    bool installed;
     
     void addEvents();
     void touchEvent(Touch *touch);

@@ -141,6 +141,17 @@ void FieldScene::addSelectorListener() {
             }
         }
     };
+    listener1->onTouchEnded = [](Touch* touch, Event* event) {
+        FieldScene *target = static_cast<FieldScene*>(event->getCurrentTarget());
+        target->nextPanel->installed = true;
+        target->nextPanel = nullptr;
+    };
+    listener1->onTouchCancelled = [](Touch* touch, Event* event) {
+        FieldScene *target = static_cast<FieldScene*>(event->getCurrentTarget());
+        target->nextPanel->removeFromParent();
+        target->nextPanel = nullptr;
+    };
+    
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);
 }
 

@@ -10,7 +10,7 @@
 USING_NS_CC;
 
 PanelImage::PanelImage() {
-    
+    installed = false;
 }
 
 PanelImage::~PanelImage() {
@@ -75,6 +75,39 @@ void PanelImage::initOptions() {
 }
 
 void PanelImage::addEvents() {
+    auto listener1 = EventListenerTouchOneByOne::create();
+    listener1->setSwallowTouches(true);
+    
+    listener1->onTouchBegan = [](Touch* touch, Event* event) {
+        PanelImage *target = static_cast<PanelImage*>(event->getCurrentTarget());
+        
+        if (!target->installed) return false;
+        
+        target->getEventDispatcher()->pauseEventListenersForTarget(target);
+        
+        Point locationInNode = target->convertToNodeSpace(touch->getLocation());
+        Size s = target->getContentSize();
+        Rect rect = Rect(0, 0, s.width, s.height);
+        log("target: x = %f, y = %f", locationInNode.x, locationInNode.y);
+        
+        if (rect.containsPoint(locationInNode)) {
+            log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
+            
+            auto rotateAction = RotateBy::create(0.5, Vec3(0, 0, 90));
+            
+            CallFunc *resumeAction = CallFunc::create([target]() {
+                target->getEventDispatcher()->resumeEventListenersForTarget(target);
+            });
+            
+            Sequence *seq = Sequence::create(rotateAction, resumeAction, NULL);
+            target->runAction(seq);
+            
+            return true;
+        }
+        target->getEventDispatcher()->resumeEventListenersForTarget(target);
+        return false;
+    };
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);
 }
 
 void PanelImage::touchEvent(Touch *touch) {
