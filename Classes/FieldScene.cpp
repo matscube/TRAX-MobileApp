@@ -57,69 +57,6 @@ bool FieldScene::init() {
 }
 
 void FieldScene::addEvents() {
-    auto listener1 = EventListenerTouchOneByOne::create();
-    listener1->setSwallowTouches(true);
-    
-    listener1->onTouchBegan = [](Touch* touch, Event* event) {
-        FieldScene *target = static_cast<FieldScene*>(event->getCurrentTarget());
-        
-        target->getEventDispatcher()->pauseEventListenersForTarget(target);
-        
-        Point locationInNode = target->convertToNodeSpace(touch->getLocation());
-        Size s = target->getContentSize();
-        Rect rect = Rect(0, 0, s.width, s.height);
-        log("target: x = %f, y = %f", locationInNode.x, locationInNode.y);
-        
-        if (rect.containsPoint(locationInNode)) {
-            log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
-            
-            auto p3 = PanelSprite::create();
-            p3->setPosition(Vec2(locationInNode.x, locationInNode.y));
-            target->addChild(p3, 0);
-            target->nextPanel = p3;
-
-            target->getEventDispatcher()->resumeEventListenersForTarget(target);
-
-            return true;
-        }
-        target->getEventDispatcher()->resumeEventListenersForTarget(target);
-        return false;
-    };
- 
-    
-
-    listener1->onTouchMoved = [](Touch* touch, Event* event) {
-        FieldScene *target = static_cast<FieldScene*>(event->getCurrentTarget());
-        
-        Point locationInNode = target->convertToNodeSpace(touch->getLocation());
-        Size s = target->getContentSize();
-        Rect rect = Rect(0, 0, s.width, s.height);
-        log("target: x = %f, y = %f", locationInNode.x, locationInNode.y);
-        
-        if (rect.containsPoint(locationInNode)) {
-            log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
-            
-            if (target->nextPanel != nullptr) {
-                target->nextPanel->setPosition(locationInNode);
-            }
-        }
-    };
-    
-    listener1->onTouchEnded = [](Touch* touch, Event* event) {
-        FieldScene *target = static_cast<FieldScene*>(event->getCurrentTarget());
-        target->nextPanel = nullptr;
-        target->getEventDispatcher()->resumeEventListenersForTarget(target);
-    };
-
-    listener1->onTouchCancelled = [](Touch* touch, Event* event) {
-        FieldScene *target = static_cast<FieldScene*>(event->getCurrentTarget());
-        target->nextPanel->removeFromParent();
-        target->nextPanel = nullptr;
-        target->getEventDispatcher()->resumeEventListenersForTarget(target);
-    };
-
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);
-
     addSelectorListener();
 }
 
@@ -130,30 +67,63 @@ void FieldScene::addSelectorListener() {
     listener1->onTouchBegan = [](Touch* touch, Event* event) {
         FieldScene *target = static_cast<FieldScene*>(event->getCurrentTarget());
         
-        target->getEventDispatcher()->pauseEventListenersForTarget(target);
-        
         Point locationInNode = target->convertToNodeSpace(touch->getLocation());
         Size s = target->getContentSize();
-        Rect rect = Rect(0, 0, s.width, s.height);
+
+        Rect rectLT = target->parallelWhiteLT->getBoundingBox();
+        Rect rectRT = target->parallelWhiteRT->getBoundingBox();
+        Rect rectLD = target->parallelWhiteLD->getBoundingBox();
+        Rect rectRD = target->parallelWhiteRD->getBoundingBox();
+        Rect rectRV = target->crossRV->getBoundingBox();
+        Rect rectRH = target->crossRH->getBoundingBox();
+        int zIndex = 1;
         log("target: x = %f, y = %f", locationInNode.x, locationInNode.y);
         
-        if (rect.containsPoint(locationInNode)) {
-            log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
+        if (rectLT.containsPoint(locationInNode)) {
+            PanelImage *p = PanelImage::create(ParallelWhiteLT);
+            p->setPosition(Vec2(rectLT.origin.x + rectLT.size.width / 2, rectLT.origin.y + rectLT.size.height / 2));
+            target->addChild(p, zIndex);
+            target->nextPanel = p;
             
-            auto p3 = PanelSprite::create();
-            p3->setPosition(Vec2(locationInNode.x, locationInNode.y));
-            target->addChild(p3, 0);
-            target->nextPanel = p3;
+            return true;
+        } else if (rectRT.containsPoint(locationInNode)) {
+            PanelImage *p = PanelImage::create(ParallelWhiteRT);
+            p->setPosition(Vec2(rectRT.origin.x + rectRT.size.width / 2, rectRT.origin.y + rectRT.size.height / 2));
+            target->addChild(p, zIndex);
+            target->nextPanel = p;
             
-            target->getEventDispatcher()->resumeEventListenersForTarget(target);
+            return true;
+        } else if (rectLD.containsPoint(locationInNode)) {
+            PanelImage *p = PanelImage::create(ParallelWhiteLD);
+            p->setPosition(Vec2(rectLD.origin.x + rectLD.size.width / 2, rectLD.origin.y + rectLD.size.height / 2));
+            target->addChild(p, zIndex);
+            target->nextPanel = p;
+            
+            return true;
+        } else if (rectRD.containsPoint(locationInNode)) {
+            PanelImage *p = PanelImage::create(ParallelWhiteRD);
+            p->setPosition(Vec2(rectRD.origin.x + rectRD.size.width / 2, rectRD.origin.y + rectRD.size.height / 2));
+            target->addChild(p, zIndex);
+            target->nextPanel = p;
+            
+            return true;
+        } else if (rectRH.containsPoint(locationInNode)) {
+            PanelImage *p = PanelImage::create(CrossRedHoritonztal);
+            p->setPosition(Vec2(rectRH.origin.x + rectRH.size.width / 2, rectRH.origin.y + rectRH.size.height / 2));
+            target->addChild(p, zIndex);
+            target->nextPanel = p;
+            
+            return true;
+        } else if (rectRV.containsPoint(locationInNode)) {
+            PanelImage *p = PanelImage::create(CrossRedVertical);
+            p->setPosition(Vec2(rectRV.origin.x + rectRV.size.width / 2, rectRV.origin.y + rectRV.size.height / 2));
+            target->addChild(p, zIndex);
+            target->nextPanel = p;
             
             return true;
         }
-        target->getEventDispatcher()->resumeEventListenersForTarget(target);
         return false;
     };
-    
-    
     
     listener1->onTouchMoved = [](Touch* touch, Event* event) {
         FieldScene *target = static_cast<FieldScene*>(event->getCurrentTarget());
@@ -171,20 +141,6 @@ void FieldScene::addSelectorListener() {
             }
         }
     };
-    
-    listener1->onTouchEnded = [](Touch* touch, Event* event) {
-        FieldScene *target = static_cast<FieldScene*>(event->getCurrentTarget());
-        target->nextPanel = nullptr;
-        target->getEventDispatcher()->resumeEventListenersForTarget(target);
-    };
-    
-    listener1->onTouchCancelled = [](Touch* touch, Event* event) {
-        FieldScene *target = static_cast<FieldScene*>(event->getCurrentTarget());
-        target->nextPanel->removeFromParent();
-        target->nextPanel = nullptr;
-        target->getEventDispatcher()->resumeEventListenersForTarget(target);
-    };
-    
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);
 }
 
@@ -207,27 +163,29 @@ void FieldScene::initPanelSelector() {
     
     
     
-    PanelImage *p = PanelImage::create(ParallelWhiteLT);
-    p->setPosition(Vec2(origin.x + space + panelSize / 2, origin.y + visibleSize.height - space - panelSize / 2));
-    this->addChild(p, zIndex);
+    parallelWhiteLT = PanelImage::create(ParallelWhiteLT);
+    parallelWhiteLT->setPosition(Vec2(origin.x + space + panelSize / 2, origin.y + visibleSize.height - space - panelSize / 2));
+    this->addChild(parallelWhiteLT, zIndex);
+    
 
-    PanelImage *p2 = PanelImage::create(ParallelWhiteRT);
-    p2->setPosition(Vec2(origin.x + space * 2 + panelSize + panelSize / 2, origin.y + visibleSize.height - space - panelSize / 2));
-    this->addChild(p2, zIndex);
 
-    PanelImage *p3 = PanelImage::create(ParallelWhiteRD);
-    p3->setPosition(Vec2(origin.x + space + panelSize / 2, origin.y + visibleSize.height - space * 2 - panelSize - panelSize / 2));
-    this->addChild(p3, zIndex);
+    parallelWhiteRT = PanelImage::create(ParallelWhiteRT);
+    parallelWhiteRT->setPosition(Vec2(origin.x + space * 2 + panelSize + panelSize / 2, origin.y + visibleSize.height - space - panelSize / 2));
+    this->addChild(parallelWhiteRT, zIndex);
 
-    PanelImage *p4 = PanelImage::create(ParallelWhiteLD);
-    p4->setPosition(Vec2(origin.x + space * 2 + panelSize + panelSize / 2, origin.y + visibleSize.height - space * 2 - panelSize - panelSize / 2));
-    this->addChild(p4, zIndex);
+    parallelWhiteRD = PanelImage::create(ParallelWhiteRD);
+    parallelWhiteRD->setPosition(Vec2(origin.x + space + panelSize / 2, origin.y + visibleSize.height - space * 2 - panelSize - panelSize / 2));
+    this->addChild(parallelWhiteRD, zIndex);
 
-    PanelImage *crossRV = PanelImage::create(CrossRedVertical);
+    parallelWhiteLD = PanelImage::create(ParallelWhiteLD);
+    parallelWhiteLD->setPosition(Vec2(origin.x + space * 2 + panelSize + panelSize / 2, origin.y + visibleSize.height - space * 2 - panelSize - panelSize / 2));
+    this->addChild(parallelWhiteLD, zIndex);
+
+    crossRV = PanelImage::create(CrossRedVertical);
     crossRV->setPosition(Vec2(origin.x + space + panelSize / 2, origin.y + visibleSize.height - space * 3 - panelSize * 2 - panelSize / 2));
     this->addChild(crossRV, zIndex);
     
-    PanelImage *crossRH = PanelImage::create(CrossRedHoritonztal);
+    crossRH = PanelImage::create(CrossRedHoritonztal);
     crossRH->setPosition(Vec2(origin.x + space * 2 + panelSize + panelSize / 2, origin.y + visibleSize.height - space * 3 - panelSize * 2 - panelSize / 2));
     this->addChild(crossRH, zIndex);
 

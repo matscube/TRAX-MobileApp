@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "PanelSprite.h"
+#include "PanelImage.h"
 
 USING_NS_CC;
 
@@ -30,9 +31,15 @@ public:
     void addSelectorListener();
     
     void initPanelSelector();
+    PanelImage *parallelWhiteLT;
+    PanelImage *parallelWhiteRT;
+    PanelImage *parallelWhiteLD;
+    PanelImage *parallelWhiteRD;
+    PanelImage *crossRV;
+    PanelImage *crossRH;
 
     // Add new panel
-    private: PanelSprite *nextPanel;
+    private: PanelImage *nextPanel;
     
     // implement the "static create()" method manually
     CREATE_FUNC(FieldScene);
