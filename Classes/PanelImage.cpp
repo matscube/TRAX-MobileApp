@@ -93,7 +93,7 @@ void PanelImage::addEvents() {
         if (rect.containsPoint(locationInNode)) {
             log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
             
-            auto rotateAction = RotateBy::create(0.5, Vec3(0, 0, 90));
+            auto rotateAction = RotateBy::create(0.2, Vec3(0, 0, 90));
             
             CallFunc *resumeAction = CallFunc::create([target]() {
                 target->getEventDispatcher()->resumeEventListenersForTarget(target);
