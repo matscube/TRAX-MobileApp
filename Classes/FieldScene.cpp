@@ -139,7 +139,10 @@ void FieldScene::addSelectorListener() {
             log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
             
             if (target->nextPanel != nullptr) {
-                target->nextPanel->setPosition(locationInNode);
+                double x = ((int)locationInNode.x / 100) * 100 + 50;
+                double y = ((int)locationInNode.y / 100) * 100 + 50;
+                Point targetPoint = Point(x, y);
+                target->nextPanel->setPosition(targetPoint);
             }
         }
     };
