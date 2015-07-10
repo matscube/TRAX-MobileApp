@@ -37,6 +37,8 @@ public:
     PanelImage *parallelWhiteRD;
     PanelImage *crossRV;
     PanelImage *crossRH;
+    
+    void initPanelField();
 
     // Add new panel
     private: PanelImage *nextPanel;

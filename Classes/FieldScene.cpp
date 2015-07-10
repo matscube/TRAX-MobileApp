@@ -52,6 +52,8 @@ bool FieldScene::init() {
     addEvents();
     
     initPanelSelector();
+    initPanelField();
+    
     
     return true;
 }
@@ -202,6 +204,21 @@ void FieldScene::initPanelSelector() {
 
 }
 
+void FieldScene::initPanelField() {
+ //   CCDrawNode *node = CCDrawNode::create();
+   // node->drawSegment(ccp(0, winSize.height*.5), ccp(winSize.width, winSize.height*.5), 1, ccc4FFromccc3B(ccWHITE));
+    for (int x = 0; x < 10; x++) {
+        DrawNode *node = DrawNode::create();
+        node->drawSegment(Vec2(x * 100, 0), Vec2(x * 100, 1000), 1, Color4F::GREEN);
+        this->addChild(node);
+    }
+    for (int y = 0; y < 10; y++) {
+        DrawNode *node = DrawNode::create();
+        node->drawSegment(Vec2(0, y * 100), Vec2(1000, y * 100), 1, Color4F::GREEN);
+        this->addChild(node);
+    }
+
+}
 
 void FieldScene::menuCloseCallback(Ref* pSender)
 {
