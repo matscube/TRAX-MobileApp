@@ -7,7 +7,6 @@
 //
 
 #include "FieldScene.h"
-#include "PanelSprite.h"
 #include "PanelImage.h"
 
 USING_NS_CC;
@@ -36,18 +35,6 @@ bool FieldScene::init() {
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    
-    auto p = PanelSprite::create();
-    p->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-    this->addChild(p, 0);
-    
-    auto p2 = PanelSprite::create();
-    p2->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 - 100 + origin.y));
-    this->addChild(p2, 0);
-
-    auto p3 = PanelSprite::create();
-    p3->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + 100 + origin.y));
-    this->addChild(p3, 0);
     
     addEvents();
     

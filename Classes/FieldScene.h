@@ -10,7 +10,6 @@
 #define __TRAX_MobileApp__FieldScene__
 
 #include <stdio.h>
-#include "PanelSprite.h"
 #include "PanelImage.h"
 
 USING_NS_CC;
