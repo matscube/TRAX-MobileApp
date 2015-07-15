@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 class Field {
-    
+    Field();
 };
 
 #endif /* defined(__TRAX_MobileApp__Field__) */
