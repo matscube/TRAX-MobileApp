@@ -11,4 +11,8 @@
 
 #include <stdio.h>
 
+class Panel {
+    
+};
+
 #endif /* defined(__SearchTest__Panel__) */
