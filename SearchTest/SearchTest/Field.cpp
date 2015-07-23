@@ -11,3 +11,7 @@
 void Field::searchTest() {
     
 }
+
+void Field::setPanels(vector<Panel> _panels) {
+    panels = _panels;
+}

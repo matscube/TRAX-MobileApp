@@ -11,8 +11,18 @@
 
 #include <stdio.h>
 
+enum PanelOrientation {
+    RedUpRight,
+    RedUpLeft,
+    RedDownRight,
+    RedDownLeft,
+    RedVertical,
+    RedHorizontal
+};
+
 class Panel {
-    
+    PanelOrientation orientation;
+    Panel(PanelOrientation _orientation);
 };
 
 #endif /* defined(__SearchTest__Panel__) */

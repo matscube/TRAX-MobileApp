@@ -19,6 +19,7 @@ class Field {
     vector<Panel> panels;
     
 public:
+    void setPanels(vector<Panel> _panels);
     void searchTest();
 };
 

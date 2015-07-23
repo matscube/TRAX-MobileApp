@@ -7,3 +7,7 @@
 //
 
 #include "Panel.h"
+
+Panel::Panel(PanelOrientation _orientation) {
+    orientation = _orientation;
+}
