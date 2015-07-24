@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		210552181B5D2A23001CF59C /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 210552161B5D2A23001CF59C /* Panel.cpp */; };
 		217272161B5E93EE0011FDEA /* Field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 217272141B5E93EE0011FDEA /* Field.cpp */; };
+		217272191B6277300011FDEA /* Tester.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 217272171B6277300011FDEA /* Tester.cpp */; };
 		21D7B5D31B5BEA2C007EC482 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21D7B5D21B5BEA2C007EC482 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,8 @@
 		210552171B5D2A23001CF59C /* Panel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panel.h; sourceTree = "<group>"; };
 		217272141B5E93EE0011FDEA /* Field.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Field.cpp; sourceTree = "<group>"; };
 		217272151B5E93EE0011FDEA /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Field.h; sourceTree = "<group>"; };
+		217272171B6277300011FDEA /* Tester.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tester.cpp; sourceTree = "<group>"; };
+		217272181B6277300011FDEA /* Tester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tester.h; sourceTree = "<group>"; };
 		21D7B5CF1B5BEA2C007EC482 /* SearchTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SearchTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D7B5D21B5BEA2C007EC482 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +71,8 @@
 				210552171B5D2A23001CF59C /* Panel.h */,
 				217272141B5E93EE0011FDEA /* Field.cpp */,
 				217272151B5E93EE0011FDEA /* Field.h */,
+				217272171B6277300011FDEA /* Tester.cpp */,
+				217272181B6277300011FDEA /* Tester.h */,
 			);
 			path = SearchTest;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			files = (
 				210552181B5D2A23001CF59C /* Panel.cpp in Sources */,
 				217272161B5E93EE0011FDEA /* Field.cpp in Sources */,
+				217272191B6277300011FDEA /* Tester.cpp in Sources */,
 				21D7B5D31B5BEA2C007EC482 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
