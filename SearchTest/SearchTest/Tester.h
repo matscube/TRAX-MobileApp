@@ -11,4 +11,8 @@
 
 #include <stdio.h>
 
+class Tester {
+    
+};
+
 #endif /* defined(__SearchTest__Tester__) */
