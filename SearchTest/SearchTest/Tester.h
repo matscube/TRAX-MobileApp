@@ -12,6 +12,8 @@
 #include <stdio.h>
 
 class Tester {
+public:
+    static void run_test();
     
 };
 

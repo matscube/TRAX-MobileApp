@@ -7,3 +7,7 @@
 //
 
 #include "Tester.h"
+
+void Tester::run_test() {
+    
+}

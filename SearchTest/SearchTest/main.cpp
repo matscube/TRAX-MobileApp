@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "Field.h"
+#include "Tester.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -15,6 +16,8 @@ int main(int argc, const char * argv[]) {
     
     Field *field = new Field();
     field->searchTest();
+    
+    Tester::run_test();
     
     return 0;
 }
