@@ -22,6 +22,7 @@ enum PanelOrientation {
 
 class Panel {
     PanelOrientation orientation;
+public:
     Panel(PanelOrientation _orientation);
 };
 

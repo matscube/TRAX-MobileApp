@@ -7,7 +7,17 @@
 //
 
 #include "Tester.h"
+#include "Panel.h"
+#include "Field.h"
 
 void Tester::run_test() {
     
+    Field *field = new Field();
+    
+    vector<Panel> panels;
+    panels.push_back(Panel(PanelOrientation::RedDownLeft));
+    field->setPanels(panels);
+
+    field->searchTest();
+
 }
