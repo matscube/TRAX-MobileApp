@@ -9,8 +9,11 @@
 #include "Tester.h"
 #include "Panel.h"
 #include "Field.h"
+#include <iostream>
+
 
 void Tester::run_test() {
+    std::cout << "Running Test...\n";
     
     Field *field = new Field();
     
