@@ -17,8 +17,14 @@ void Tester::run_test() {
     
     Field *field = new Field();
     
-    vector<Panel> panels;
-    panels.push_back(Panel(PanelOrientation::RedDownLeft));
+    vector<vector<Panel> > panels;
+    for (int y = 0; y < 10; y++) {
+        vector<Panel> panelLine;
+        for (int x = 0; x < 10; x++) {
+            panelLine.push_back(Panel(PanelOrientation::RedDownLeft));
+        }
+        panels.push_back(panelLine);
+    }
     field->setPanels(panels);
 
     field->searchTest();

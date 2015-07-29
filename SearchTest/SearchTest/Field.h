@@ -16,10 +16,11 @@
 using namespace::std;
 
 class Field {
-    vector<Panel> panels;
     
 public:
-    void setPanels(vector<Panel> _panels);
+    Field();
+    vector<vector<Panel> > panels;
+    void setPanels(vector<vector<Panel> > _panels);
     void searchTest();
 };
 

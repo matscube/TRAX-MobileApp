@@ -8,10 +8,14 @@
 
 #include "Field.h"
 
+Field::Field() {
+
+}
+
 void Field::searchTest() {
     
 }
 
-void Field::setPanels(vector<Panel> _panels) {
+void Field::setPanels(vector<vector<Panel> > _panels) {
     panels = _panels;
 }
