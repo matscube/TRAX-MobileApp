@@ -13,7 +13,13 @@ Field::Field() {
 }
 
 void Field::searchTest() {
-    
+    long ySize = panels.size();
+    long xSize = panels[0].size();
+    for (int y = 0; y < ySize; y++) {
+        for (int x = 0; x < xSize; x++) {
+            
+        }
+    }
 }
 
 void Field::setPanels(vector<vector<Panel> > _panels) {
