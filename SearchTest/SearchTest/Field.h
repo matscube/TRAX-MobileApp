@@ -22,6 +22,7 @@ public:
     vector<vector<Panel> > panels;
     void setPanels(vector<vector<Panel> > _panels);
     void searchTest();
+    void searchLoop(Panel start, Panel current);
 };
 
 #endif /* defined(__SearchTest__Field__) */

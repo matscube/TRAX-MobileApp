@@ -22,6 +22,10 @@ void Field::searchTest() {
     }
 }
 
+void Field::searchLoop(Panel start, Panel current) {
+    
+}
+
 void Field::setPanels(vector<vector<Panel> > _panels) {
     panels = _panels;
 }
