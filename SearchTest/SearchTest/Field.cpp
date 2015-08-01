@@ -17,7 +17,7 @@ void Field::searchTest() {
     long xSize = panels[0].size();
     for (int y = 0; y < ySize; y++) {
         for (int x = 0; x < xSize; x++) {
-            
+            Panel p = panels[x][y];
         }
     }
 }
