@@ -18,6 +18,7 @@ void Field::searchTest() {
     for (int y = 0; y < ySize; y++) {
         for (int x = 0; x < xSize; x++) {
             Panel p = panels[x][y];
+            searchLoop(p, p);
         }
     }
 }
