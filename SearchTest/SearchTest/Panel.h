@@ -20,6 +20,11 @@ enum PanelOrientation {
     RedHorizontal
 };
 
+enum PanelColor {
+    Red,
+    White
+};
+
 class Panel {
     PanelOrientation orientation;
 public:
