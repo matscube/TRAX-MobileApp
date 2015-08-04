@@ -18,12 +18,12 @@ void Field::searchTest() {
     for (int y = 0; y < ySize; y++) {
         for (int x = 0; x < xSize; x++) {
             Panel p = panels[x][y];
-            searchLoop(p, p);
+            searchLoop(PanelColor::Red, p, p);
         }
     }
 }
 
-void Field::searchLoop(Panel start, Panel current) {
+void Field::searchLoop(PanelColor color, Panel start, Panel current) {
     
 }
 
