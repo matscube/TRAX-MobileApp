@@ -26,8 +26,8 @@ enum PanelColor {
 };
 
 class Panel {
-    PanelOrientation orientation;
 public:
+    PanelOrientation orientation;
     Panel(PanelOrientation _orientation);
 };
 

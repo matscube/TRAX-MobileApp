@@ -24,6 +24,7 @@ void Field::searchTest() {
 }
 
 void Field::searchLoop(PanelColor color, Panel start, Panel current) {
+    PanelOrientation ori = current.orientation;
     
 }
 
