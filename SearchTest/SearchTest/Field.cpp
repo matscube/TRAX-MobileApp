@@ -25,7 +25,12 @@ void Field::searchTest() {
 
 void Field::searchLoop(PanelColor color, Panel start, Panel current) {
     PanelOrientation ori = current.orientation;
-    
+    if (color == PanelColor::Red) {
+    } else if (color == PanelColor::White) {
+        
+    } else {
+        // error
+    }
 }
 
 void Field::setPanels(vector<vector<Panel> > _panels) {
