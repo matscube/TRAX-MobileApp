@@ -40,6 +40,7 @@ bool FieldScene::init() {
     
     initPanelSelector();
     initPanelField();
+    initToolbar();
     
     
     return true;
@@ -208,6 +209,49 @@ void FieldScene::initPanelField() {
         this->addChild(node);
     }
 
+}
+
+void FieldScene::initToolbar() {
+    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    int zIndex = 1;
+
+    auto bg = Sprite::create();
+    Rect rect = Rect(0, 0, 200, visibleSize.height);
+    bg->setTextureRect(rect);
+    bg->setColor(Color3B::BLUE);
+    bg->setPosition(Vec2(origin.x + visibleSize.width - rect.size.width / 2, origin.y + visibleSize.height - rect.size.height / 2));
+    this->addChild(bg, zIndex);
+    
+    auto debugButton = Sprite::create();
+    Rect buttonRect = Rect(0, 0, 100, 100);
+    debugButton->setTextureRect(buttonRect);
+    debugButton->setColor(Color3B::RED);
+    debugButton->setPosition(Vec2(rect.size.width / 2,  rect.size.height - 10 - buttonRect.size.height / 2));
+    bg->addChild(debugButton);
+    
+    
+    auto listener1 = EventListenerTouchOneByOne::create();
+    listener1->setSwallowTouches(true);
+    
+    listener1->onTouchBegan = [](Touch* touch, Event* event) {
+        Sprite *target = static_cast<Sprite*>(event->getCurrentTarget());
+        
+        Point locationInNode = target->convertToNodeSpace(touch->getLocation());
+        Size s = target->getContentSize();
+        Rect rect = Rect(0, 0, s.width, s.height);
+        log("rect: width = %f, height = %f", s.width, s.height);
+        log("target: x = %f, y = %f", locationInNode.x, locationInNode.y);
+        
+        if (rect.containsPoint(locationInNode)) {
+            log("debug button tapped");
+            return true;
+        }
+        return false;
+    };
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, debugButton);
+
+    
 }
 
 void FieldScene::menuCloseCallback(Ref* pSender)

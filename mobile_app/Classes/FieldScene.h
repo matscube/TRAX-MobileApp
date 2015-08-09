@@ -38,6 +38,7 @@ public:
     PanelImage *crossRH;
     
     void initPanelField();
+    void initToolbar();
 
     // Add new panel
     private: PanelImage *nextPanel;
