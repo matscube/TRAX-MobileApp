@@ -61,45 +61,13 @@ void FieldScene::addSelectorListener() {
         Size s = target->getContentSize();
 
         Rect rectLT = target->parallelWhiteLT->getBoundingBox();
-        Rect rectRT = target->parallelWhiteRT->getBoundingBox();
-        Rect rectLD = target->parallelWhiteLD->getBoundingBox();
-        Rect rectRD = target->parallelWhiteRD->getBoundingBox();
         Rect rectRV = target->crossRV->getBoundingBox();
-        Rect rectRH = target->crossRH->getBoundingBox();
         int zIndex = 1;
         log("target: x = %f, y = %f", locationInNode.x, locationInNode.y);
         
         if (rectLT.containsPoint(locationInNode)) {
             PanelImage *p = PanelImage::create(ParallelWhiteLT);
             p->setPosition(Vec2(rectLT.origin.x + rectLT.size.width / 2, rectLT.origin.y + rectLT.size.height / 2));
-            target->addChild(p, zIndex);
-            target->nextPanel = p;
-            
-            return true;
-        } else if (rectRT.containsPoint(locationInNode)) {
-            PanelImage *p = PanelImage::create(ParallelWhiteRT);
-            p->setPosition(Vec2(rectRT.origin.x + rectRT.size.width / 2, rectRT.origin.y + rectRT.size.height / 2));
-            target->addChild(p, zIndex);
-            target->nextPanel = p;
-            
-            return true;
-        } else if (rectLD.containsPoint(locationInNode)) {
-            PanelImage *p = PanelImage::create(ParallelWhiteLD);
-            p->setPosition(Vec2(rectLD.origin.x + rectLD.size.width / 2, rectLD.origin.y + rectLD.size.height / 2));
-            target->addChild(p, zIndex);
-            target->nextPanel = p;
-            
-            return true;
-        } else if (rectRD.containsPoint(locationInNode)) {
-            PanelImage *p = PanelImage::create(ParallelWhiteRD);
-            p->setPosition(Vec2(rectRD.origin.x + rectRD.size.width / 2, rectRD.origin.y + rectRD.size.height / 2));
-            target->addChild(p, zIndex);
-            target->nextPanel = p;
-            
-            return true;
-        } else if (rectRH.containsPoint(locationInNode)) {
-            PanelImage *p = PanelImage::create(CrossRedHoritonztal);
-            p->setPosition(Vec2(rectRH.origin.x + rectRH.size.width / 2, rectRH.origin.y + rectRH.size.height / 2));
             target->addChild(p, zIndex);
             target->nextPanel = p;
             
@@ -170,28 +138,10 @@ void FieldScene::initPanelSelector() {
     parallelWhiteLT = PanelImage::create(ParallelWhiteLT);
     parallelWhiteLT->setPosition(Vec2(origin.x + space + panelSize / 2, origin.y + visibleSize.height - space - panelSize / 2));
     this->addChild(parallelWhiteLT, zIndex);
-    
-
-
-    parallelWhiteRT = PanelImage::create(ParallelWhiteRT);
-    parallelWhiteRT->setPosition(Vec2(origin.x + space * 2 + panelSize + panelSize / 2, origin.y + visibleSize.height - space - panelSize / 2));
-    this->addChild(parallelWhiteRT, zIndex);
-
-    parallelWhiteRD = PanelImage::create(ParallelWhiteRD);
-    parallelWhiteRD->setPosition(Vec2(origin.x + space + panelSize / 2, origin.y + visibleSize.height - space * 2 - panelSize - panelSize / 2));
-    this->addChild(parallelWhiteRD, zIndex);
-
-    parallelWhiteLD = PanelImage::create(ParallelWhiteLD);
-    parallelWhiteLD->setPosition(Vec2(origin.x + space * 2 + panelSize + panelSize / 2, origin.y + visibleSize.height - space * 2 - panelSize - panelSize / 2));
-    this->addChild(parallelWhiteLD, zIndex);
 
     crossRV = PanelImage::create(CrossRedVertical);
     crossRV->setPosition(Vec2(origin.x + space + panelSize / 2, origin.y + visibleSize.height - space * 3 - panelSize * 2 - panelSize / 2));
     this->addChild(crossRV, zIndex);
-    
-    crossRH = PanelImage::create(CrossRedHoritonztal);
-    crossRH->setPosition(Vec2(origin.x + space * 2 + panelSize + panelSize / 2, origin.y + visibleSize.height - space * 3 - panelSize * 2 - panelSize / 2));
-    this->addChild(crossRH, zIndex);
 
 }
 

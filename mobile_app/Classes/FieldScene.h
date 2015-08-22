@@ -31,11 +31,7 @@ public:
     
     void initPanelSelector();
     PanelImage *parallelWhiteLT;
-    PanelImage *parallelWhiteRT;
-    PanelImage *parallelWhiteLD;
-    PanelImage *parallelWhiteRD;
     PanelImage *crossRV;
-    PanelImage *crossRH;
     
     void initPanelField();
     void initToolbar();
