@@ -140,7 +140,7 @@ void FieldScene::initPanelSelector() {
     this->addChild(parallelWhiteLT, zIndex);
 
     crossRV = PanelImage::create(CrossRedVertical);
-    crossRV->setPosition(Vec2(origin.x + space + panelSize / 2, origin.y + visibleSize.height - space * 3 - panelSize * 2 - panelSize / 2));
+    crossRV->setPosition(Vec2(origin.x + space * 2 + panelSize + panelSize / 2, origin.y + visibleSize.height - space - panelSize / 2));
     this->addChild(crossRV, zIndex);
 
 }
